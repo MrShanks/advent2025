@@ -2,6 +2,7 @@ package p1
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -59,15 +60,27 @@ func Solve(filepath string) int {
 }
 
 func calculate(intervals []Interval, ingredients []int) int {
-	fresh := 0
-	for _, ing := range ingredients {
-		for _, interv := range intervals {
-			if ing >= interv.Min && ing <= interv.Max {
-				fresh++
-				break
-			}
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i].Min < intervals[j].Min
+	})
+
+	sort.Ints(ingredients)
+
+	count := 0
+	i, j := 0, 0
+	for i < len(intervals) && j < len(ingredients) {
+		ing := ingredients[j]
+		interval := intervals[i]
+
+		if ing < interval.Min {
+			j++
+		} else if ing > interval.Max {
+			i++
+		} else {
+			count++
+			j++
 		}
 	}
 
-	return fresh
+	return count
 }
