@@ -11,7 +11,7 @@ import (
 
 func calculate(cols [][]int, operand []string) int {
 
-	tot := make([]int, 0)
+	grandTotal := 0
 
 	for i := range len(cols[0]) {
 		switch operand[i] {
@@ -21,7 +21,7 @@ func calculate(cols [][]int, operand []string) int {
 				for j := range len(cols) {
 					count += cols[j][i]
 				}
-				tot = append(tot, count)
+				grandTotal += count
 			}
 		case "*":
 			{
@@ -29,17 +29,12 @@ func calculate(cols [][]int, operand []string) int {
 				for j := range len(cols) {
 					count *= cols[j][i]
 				}
-				tot = append(tot, count)
+				grandTotal += count
 			}
 		}
 	}
 
-	count := 0
-	for _, e := range tot {
-		count += e
-	}
-
-	return count
+	return grandTotal
 }
 
 func Solve(filepath string) int {
