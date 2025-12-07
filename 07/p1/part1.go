@@ -21,13 +21,11 @@ func Solve(filepath string) int {
 
 	// Find the starting position 'S'
 	activeBeams := make(map[int]bool)
-	startRow := 0
 
-	for r, row := range matrix {
+	for _, row := range matrix {
 		for c, char := range row {
 			if char == "S" {
 				activeBeams[c] = true
-				startRow = r
 				break
 			}
 		}
@@ -38,7 +36,7 @@ func Solve(filepath string) int {
 
 	height := len(matrix)
 
-	for r := startRow; r < height; r++ {
+	for r := range height {
 		nextBeams := make(map[int]bool)
 
 		for col := range activeBeams {
@@ -56,8 +54,6 @@ func Solve(filepath string) int {
 			}
 		}
 
-		// The beams in nextBeams are now ready to process the next row (r+1)
-		// merging is handled by the map keys which are unique.
 		activeBeams = nextBeams
 	}
 
