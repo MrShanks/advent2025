@@ -4,21 +4,7 @@ import (
 	"github.com/MrShanks/advent2025/utils"
 )
 
-func Solve(filepath string) int {
-	f, scanner := utils.ReadInput(filepath)
-	defer f.Close()
-
-	// Parse grid first to get dimensions
-	matrix := make([][]string, 0)
-	for scanner.Scan() {
-		rawText := scanner.Text()
-		row := make([]string, 0)
-		for _, l := range rawText {
-			row = append(row, string(l))
-		}
-		matrix = append(matrix, row)
-	}
-
+func calculate(matrix [][]string) int {
 	height := len(matrix)
 	if height == 0 {
 		return 0
@@ -86,4 +72,23 @@ func Solve(filepath string) int {
 	}
 
 	return total
+}
+
+func Solve(filepath string) int {
+	f, scanner := utils.ReadInput(filepath)
+	defer f.Close()
+
+	// Parse grid first to get dimensions
+	matrix := make([][]string, 0)
+	for scanner.Scan() {
+		rawText := scanner.Text()
+		row := make([]string, 0)
+		for _, l := range rawText {
+			row = append(row, string(l))
+		}
+		matrix = append(matrix, row)
+	}
+
+	return calculate(matrix)
+
 }
