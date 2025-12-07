@@ -6,9 +6,6 @@ import (
 
 func calculate(matrix [][]string) int {
 	height := len(matrix)
-	if height == 0 {
-		return 0
-	}
 	width := len(matrix[0])
 
 	currentCounts := make([]int, width)
