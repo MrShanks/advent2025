@@ -36,18 +36,12 @@ func Solve(filepath string) int {
 		}
 	}
 
-	// Simulate the beams falling downward
 	height := len(matrix)
-	width := len(matrix[0])
 
 	for r := startRow; r < height; r++ {
 		nextBeams := make(map[int]bool)
 
 		for col := range activeBeams {
-			// Check if beam drifted out of bounds
-			if col < 0 || col >= width {
-				continue
-			}
 
 			char := matrix[r][col]
 
