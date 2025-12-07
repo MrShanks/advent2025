@@ -25,7 +25,6 @@ func Solve(filepath string) int {
 	}
 	width := len(matrix[0])
 
-	// Two buffers: one for the current row of timelines, one for the next
 	currentCounts := make([]int, width)
 	nextCounts := make([]int, width)
 
@@ -77,7 +76,7 @@ func Solve(filepath string) int {
 			}
 		}
 
-		// Swap buffers: next becomes current for the next iteration
+		// Swap buffers
 		currentCounts, nextCounts = nextCounts, currentCounts
 	}
 
