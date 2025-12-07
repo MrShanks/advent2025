@@ -71,6 +71,8 @@ func Solve(filepath string) int {
 
 		digitStr := ""
 
+		// read digits vertically we can ignore the fact that it should be right to left because
+		// 35 + 7 = 7 + 35
 		for r := range opRowIdx {
 			char := matrix[r][col]
 			if unicode.IsDigit(char) {
