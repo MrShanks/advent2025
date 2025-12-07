@@ -31,13 +31,11 @@ func calculate(matrix [][]string) int {
 		// Reset next row buffer to 0
 		nextCounts := make([]int, width)
 
-		activeCount := 0
 		for c := range width {
 			count := currentCounts[c]
 			if count == 0 {
 				continue
 			}
-			activeCount++
 
 			char := matrix[r][c]
 
