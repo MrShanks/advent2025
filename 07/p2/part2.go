@@ -9,7 +9,6 @@ func calculate(matrix [][]string) int {
 	width := len(matrix[0])
 
 	currentCounts := make([]int, width)
-	nextCounts := make([]int, width)
 
 	// Find Start 'S' and initialize
 	found := false
@@ -30,9 +29,7 @@ func calculate(matrix [][]string) int {
 	// Process row by row
 	for r := range height {
 		// Reset next row buffer to 0
-		for i := range nextCounts {
-			nextCounts[i] = 0
-		}
+		nextCounts := make([]int, width)
 
 		activeCount := 0
 		for c := range width {
@@ -56,8 +53,7 @@ func calculate(matrix [][]string) int {
 			}
 		}
 
-		// Swap buffers
-		currentCounts, nextCounts = nextCounts, currentCounts
+		currentCounts = nextCounts
 	}
 
 	// Sum up any timelines that reached the bottom successfully
