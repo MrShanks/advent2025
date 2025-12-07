@@ -1,7 +1,6 @@
 package p2
 
 import (
-	"fmt"
 	"strconv"
 	"unicode"
 
@@ -24,7 +23,6 @@ func Solve(filepath string) int {
 	matrix := make([][]rune, len(rawLines))
 	for i, line := range rawLines {
 		matrix[i] = []rune(line)
-		fmt.Println(string(matrix[i]))
 	}
 
 	var currentBlockNumbers []int
@@ -79,7 +77,6 @@ func Solve(filepath string) int {
 				digitStr += string(char)
 			}
 		}
-		fmt.Println(string(digitStr))
 
 		if len(digitStr) > 0 {
 			num, err := strconv.Atoi(digitStr)
