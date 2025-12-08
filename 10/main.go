@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/MrShanks/advent2025/10/p1"
-	"github.com/MrShanks/avvent2025/10/p2"
+	"github.com/MrShanks/advent2025/10/p2"
 )
 
 func main() {
