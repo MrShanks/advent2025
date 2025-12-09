@@ -8,7 +8,6 @@ func Solve(filepath string) int {
 	f, scanner := utils.ReadInput(filepath)
 	defer f.Close()
 
-	counter := 0
 	matrix := make([][]string, 0)
 	for scanner.Scan() {
 		rawText := scanner.Text()
@@ -36,6 +35,7 @@ func Solve(filepath string) int {
 
 	height := len(matrix)
 
+	counter := 0
 	for r := range height {
 		nextBeams := make(map[int]bool)
 
