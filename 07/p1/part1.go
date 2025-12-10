@@ -28,9 +28,6 @@ func Solve(filepath string) int {
 				break
 			}
 		}
-		if len(activeBeams) > 0 {
-			break
-		}
 	}
 
 	height := len(matrix)

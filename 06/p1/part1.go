@@ -9,25 +9,25 @@ import (
 	"github.com/MrShanks/advent2025/utils"
 )
 
-func calculate(cols [][]int, operand []string) int {
+func calculate(matrix [][]int, operand []string) int {
 
 	grandTotal := 0
 
-	for i := range len(cols[0]) {
+	for i := range len(matrix[0]) {
 		switch operand[i] {
 		case "+":
 			{
 				count := 0
-				for j := range len(cols) {
-					count += cols[j][i]
+				for j := range len(matrix) {
+					count += matrix[j][i]
 				}
 				grandTotal += count
 			}
 		case "*":
 			{
 				count := 1
-				for j := range len(cols) {
-					count *= cols[j][i]
+				for j := range len(matrix) {
+					count *= matrix[j][i]
 				}
 				grandTotal += count
 			}

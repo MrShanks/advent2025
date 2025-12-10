@@ -99,6 +99,7 @@ func Solve(filepath string, limit int) int {
 	dsu := NewDSU(len(points))
 
 	//starting state, every node is its ownn parent and the size of the circuit is 1
+	//				A   B   C   D
 	//Node Index	0	1	2	3
 	//Parent		0	1	2	3
 	//Size			1	1	1	1

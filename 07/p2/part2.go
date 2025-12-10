@@ -11,21 +11,17 @@ func calculate(matrix [][]string) int {
 	currentCounts := make([]int, width)
 
 	// Find Start 'S' and initialize
-	found := false
 	for _, row := range matrix {
 		for c, char := range row {
 			if char == "S" {
 				currentCounts[c] = 1
-				found = true
 				break
 			}
-		}
-		if found {
-			break
 		}
 	}
 
 	total := 0
+
 	// Process row by row
 	for r := range height {
 		// Reset next row buffer to 0

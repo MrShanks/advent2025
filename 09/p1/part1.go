@@ -26,14 +26,9 @@ func Solve(filepath string) int {
 
 	var maxArea int
 	for i, p1 := range points {
-		if i+1 >= len(points)-1 {
-			break
-		}
-
 		for _, p2 := range points[i+1:] {
-			x, y := 0, 0
-			x = abs(p1.x - p2.x)
-			y = abs(p1.y - p2.y)
+			x := abs(p1.x - p2.x)
+			y := abs(p1.y - p2.y)
 
 			current := (x + 1) * (y + 1)
 			maxArea = max(maxArea, current)
