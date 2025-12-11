@@ -1,7 +1,7 @@
 package p1
 
 import (
-	"fmt"
+	"strings"
 
 	"github.com/MrShanks/advent2025/utils"
 )
@@ -10,12 +10,25 @@ func Solve(filepath string) int {
 	f, scanner := utils.ReadInput(filepath)
 	defer f.Close()
 
-	counter := 0
+	servers := make(map[string][]string)
 	for scanner.Scan() {
 		raw := scanner.Text()
 
-		fmt.Println(raw)
+		parts := strings.Split(raw, ":")
+		servers[parts[0]] = strings.Fields(parts[1])
 	}
 
-	return counter
+	return search(servers, "you")
+}
+
+func search(servers map[string][]string, key string) int {
+	if key == "out" {
+		return 1
+	}
+
+	numberOfPaths := 0
+	for _, v := range servers[key] {
+		numberOfPaths += search(servers, v)
+	}
+	return numberOfPaths
 }
