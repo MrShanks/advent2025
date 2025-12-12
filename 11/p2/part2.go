@@ -44,13 +44,8 @@ func countPathsMemo(servers map[string][]string, current, target string, memo ma
 		return val
 	}
 
-	neighbors, ok := servers[current]
-	if !ok {
-		return 0
-	}
-
 	totalPaths := 0
-	for _, neighbor := range neighbors {
+	for _, neighbor := range servers[current] {
 		totalPaths += countPathsMemo(servers, neighbor, target, memo)
 	}
 
